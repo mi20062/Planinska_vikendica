@@ -1,0 +1,81 @@
+<header>
+  <div class="top-nav">
+    <a routerLink="/">Početna</a>
+    <a routerLink="/korisnik">Profil</a>
+    <a routerLink="/vikendiceTurista">Vikendice</a>
+  </div>
+</header>
+
+<body>
+  <div class="container">
+    <!-- LEVA STRANA: Detalji vikendice -->
+    <section class="details">
+      <h2>{{ vikendica.naziv }}</h2>
+      <p class="mesto">{{ vikendica.mesto }}</p>
+      <p class="vlasnik"><strong>Vlasnik:</strong> {{ vikendica.vlasnik_id }}</p>
+      <p class="opis">{{ vikendica.opis }}</p>
+
+      <div class="info-box">
+        <p><strong>Broj soba:</strong> {{ vikendica.broj_soba }}</p>
+        <p><strong>Cena po noći:</strong> {{ vikendica.cena }} €</p>
+      </div>
+
+      <div class="slika-vikendice">
+        <img [src]="profileImgUrl" alt="Slika vikendice" />
+      </div>
+    </section>
+
+    <!-- DESNA STRANA: Forma za zakazivanje -->
+    <section class="zakazivanje">
+      <h2>Zakazivanje vikendice</h2>
+
+      <!-- STEP 1 -->
+      <div  class="step">
+        <h3>Korak 1: Unesite detalje boravka</h3>
+
+        <label>Datum početka:</label>
+        <input type="datetime-local" [(ngModel)]="pocetak" />
+
+        <label>Datum kraja:</label>
+        <input type="datetime-local" [(ngModel)]="kraj" />
+
+        <label>Broj odraslih:</label>
+        <input type="number" min="1" [(ngModel)]="odrasli" />
+
+        <label>Broj dece:</label>
+        <input type="number" min="0" [(ngModel)]="deca" />
+
+        <button (click)="predjiNaKorak2()">Dalje</button>
+      </div>
+
+      <!-- STEP 2 -->
+    @if(korak == 2){
+      <div class="step">
+        <h3>Korak 2: Potvrda i plaćanje</h3>
+
+        <div class="rezime">
+          <p><strong>Vikendica:</strong> {{ vikendica.naziv }}</p>
+          <p><strong>Od:</strong> {{ pocetak | date: 'short' }}</p>
+          <p><strong>Do:</strong> {{ kraj | date: 'short' }}</p>
+          <p><strong>Odrasli:</strong> {{ odrasli }}</p>
+          <p><strong>Deca:</strong> {{ deca }}</p>
+          <p><strong>Ukupna cena:</strong> {{ ukupnaCena }} €</p>
+        </div>
+
+        <label>Broj kartice:</label>
+        <input type="text" [(ngModel)]="brojKartice" />
+
+        <label>Dodatni zahtevi:</label>
+        <textarea maxlength="500" [(ngModel)]="zahtev" placeholder="Unesite posebne želje..."></textarea>
+
+        <div class="dugmad">
+          <button (click)="korak = 1">Nazad</button>
+          <button (click)="potvrdiZakazivanje()">Potvrdi</button>
+        </div>
+
+        <p  class="poruka">{{ poruka }}</p>
+      </div>
+    }
+    </section>
+  </div>
+</body>

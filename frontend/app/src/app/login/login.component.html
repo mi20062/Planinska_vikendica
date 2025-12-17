@@ -1,0 +1,36 @@
+<div class="auth-links">
+    <a routerLink="/" class="login-link">Početna</a> 
+    
+    </div>
+<div class="login-container">
+  
+  <div class="login-card">
+    <h2>Prijava</h2>
+    
+
+    <form>
+      <label for="korisnicko_ime">Korisničko ime:</label>
+      <input type="text" id="korisnicko_ime" name="korisnicko_ime" [(ngModel)] = "korisnicko_ime" />
+
+      <label for="lozinka">Lozinka:</label>
+      <input type="password" id="lozinka" name="lozinka" [(ngModel)] = "lozinka"/>
+
+      <div class="radio-group">
+        <p>Tip korisnika:</p>
+        <label><input type="radio" name="tip" value="turista" [(ngModel)] = "tip"/> Turista</label>
+        <label><input type="radio" name="tip" value="vlasnik" [(ngModel)] = "tip" /> Vlasnik</label>
+      </div>
+
+      <button (click) = "login()">Uloguj se</button>
+    </form>
+
+    <div class="register-link">
+      Nemaš nalog? <a routerLink = "/registracija">Registruj se</a>
+    </div>
+  </div>
+  @if(poruka != ""){
+    <h1 class="poruka-alert">{{ poruka }}</h1>
+  }
+</div>
+
+

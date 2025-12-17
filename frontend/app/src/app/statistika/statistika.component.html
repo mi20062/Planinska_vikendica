@@ -1,0 +1,23 @@
+<header>
+  <div class="top-nav">
+    <a routerLink="/">Почетна</a>
+    <a routerLink="/korisnik">Профил</a>
+    <a routerLink="/vlasnikRezervacije">Резервације</a>
+    <a class="active" routerLink="/statistika">Статистика</a>
+  </div>
+</header>
+
+<div class="statistika-container">
+  <h2 class="statistika-naslov">📊 Statistika rezervacija</h2>
+
+  <div class="dijagram-kartica">
+    <h3>Rezervacije po mesecima</h3>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <div class="dijagram-kartica pie-chart">
+    <h3>Odnos vikend / radna nedelja</h3>
+    <canvas id="pieChart"></canvas>
+  </div>
+</div>
+

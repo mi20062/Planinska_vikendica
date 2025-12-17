@@ -1,0 +1,101 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Početna stranica</title>
+</head>
+<body>
+  <div class="auth-links">
+    <a routerLink="/login" class="login-link">Prijava</a> |
+    <a routerLink = "/registracija" class="register-link">Registracija</a>
+  </div>
+
+  <h1>Opšte informacije</h1>
+
+  <div class="info-container">
+    <div class="info-card">
+      <h3>Ukupan broj vikendica</h3>
+      <p id="ukupno-vikendica">{{statistika.broj_vikendica}}</p>
+    </div>
+    <div class="info-card">
+      <h3>Ukupan broj vlasnika</h3>
+      <p id="ukupno-vlasnika">{{statistika.broj_vlasnika}}</p>
+    </div>
+    <div class="info-card">
+      <h3>Ukupan broj turista</h3>
+      <p id="ukupno-turista">{{statistika.broj_turista}}</p>
+    </div>
+    <div class="info-card">
+      <h3>Rezervacije u poslednjih 24h</h3>
+      <p id="rez-24h">{{statistika.broj_danas}}</p>
+    </div>
+    <div class="info-card">
+      <h3>Rezervacije u poslednjih 7 dana</h3>
+      <p id="rez-7dana">{{statistika.broj_nedelja}}</p>
+    </div>
+    <div class="info-card">
+      <h3>Rezervacije u poslednjih 30 dana</h3>
+      <p id="rez-30dana">{{statistika.broj_mesec}}</p>
+    </div>
+  </div>
+
+  <h2>Pretraga vikendica</h2>
+
+  <form class="search-form">
+    <label for="naziv">Naziv:</label>
+    <input type="text" id="naziv" name="naziv" placeholder="Unesite naziv vikendice" [(ngModel)] = "naziv">
+
+    <label for="mesto">Mesto:</label>
+    <input type="text" id="mesto" name="mesto" placeholder="Unesite mesto" [(ngModel)] = "mesto">
+
+    <div class="sort-controls">
+      <label for="sortBy">Sortiraj po:</label>
+      <select id="sortBy" name="sortBy" [(ngModel)] = "sortirajPO">
+        <option value="naziv">Nazivu</option>
+        <option value="mesto">Mestu</option>
+        <option value="cena">Ceni</option>
+      </select>
+
+      <label for="sortOrder">Redosled:</label>
+      <select id="sortOrder" name="sortOrder" [(ngModel)] = "sortirajKAKO">
+        <option value="rastuce">Rastuće</option>
+        <option value="opadajuce">Opadajuće</option>
+      </select>
+    </div>
+
+    <button (click) = "pretrazi()">Pretraži</button>
+  </form>
+
+  <h2>Lista vikendica</h2>
+
+  @if(sveVikendice.length > 0){
+  <table class="vikendice-tabela">
+    <thead>
+      <tr>
+        <th>
+          Naziv   
+        </th>
+        <th>
+          Mesto 
+        </th>
+        <th>Broj soba</th>
+        <th>Cena po noći</th>
+      </tr>
+    </thead>
+    <tbody id="vikendice-body">
+      <!-- Redovi će biti dodati dinamički -->
+       @for(v of sveVikendice; track v.id){
+          <tr>
+            <th>{{v.naziv}}</th>
+            <th>{{v.mesto}}</th>
+            <th>{{v.broj_soba}}</th>
+            <th>{{v.cena}}</th>
+          </tr>
+       }
+    </tbody>
+  </table>
+  }
+  @if(poruka != ""){
+    <h1 class="poruka-alert">{{ poruka }}</h1>
+  }
+  
+
+</body>

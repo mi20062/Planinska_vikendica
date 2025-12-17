@@ -1,0 +1,55 @@
+.top-nav {
+  background-color: rgb(30, 144, 255);
+  padding: 10px;
+  text-align: center;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+.top-nav a.active {
+  text-decoration: underline;
+}
+
+.container {
+  width: 80%;
+  margin: 30px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+button {
+  background-color: rgb(30, 144, 255);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.obrisi {
+  background-color: crimson;
+}
+
+form input, textarea {
+  display: block;
+  margin: 5px 0;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

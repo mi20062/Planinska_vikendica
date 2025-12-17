@@ -1,0 +1,72 @@
+<header>
+  <div class="top-nav">
+    <a routerLink="/">Početna</a> &nbsp; &nbsp;
+    <a routerLink="/korisnik">Profil</a> &nbsp; &nbsp;
+    <a >Rezervacije</a> &nbsp; &nbsp;
+    <a routerLink = "/vikendiceTurista">Vikendice</a>
+  </div>
+</header>
+<body>
+    
+    <h2>Pretraga vikendica</h2>
+
+  <form class="search-form">
+    <label for="naziv">Naziv:</label>
+    <input type="text" id="naziv" name="naziv" placeholder="Unesite naziv vikendice" [(ngModel)] = "naziv">
+
+    <label for="mesto">Mesto:</label>
+    <input type="text" id="mesto" name="mesto" placeholder="Unesite mesto" [(ngModel)] = "mesto">
+
+    <div class="sort-controls">
+      <label for="sortBy">Sortiraj po:</label>
+      <select id="sortBy" name="sortBy" [(ngModel)] = "sortirajPO">
+        <option value="naziv">Nazivu</option>
+        <option value="mesto">Mestu</option>
+        <option value="cena">Ceni</option>
+      </select>
+
+      <label for="sortOrder">Redosled:</label>
+      <select id="sortOrder" name="sortOrder" [(ngModel)] = "sortirajKAKO">
+        <option value="rastuce">Rastuće</option>
+        <option value="opadajuce">Opadajuće</option>
+      </select>
+    </div>
+
+    <button (click) = "pretrazi()">Pretraži</button>
+  </form>
+
+  <h2>Lista vikendica</h2>
+
+  @if(sveVikendice.length > 0){
+  <table class="vikendice-tabela">
+    <thead>
+      <tr>
+        <th>
+          Naziv   
+        </th>
+        <th>
+          Mesto 
+        </th>
+        <th>Broj soba</th>
+        <th>Cena po noći</th>
+      </tr>
+    </thead>
+    <tbody id="vikendice-body">
+      <!-- Redovi će biti dodati dinamički -->
+       @for(v of sveVikendice; track v.id){
+          <tr>
+            <th><a (click) = "detalji(v.id)">{{v.naziv}}</a></th>
+            <th>{{v.mesto}}</th>
+            <th>{{v.broj_soba}}</th>
+            <th>{{v.cena}}</th>
+          </tr>
+       }
+    </tbody>
+  </table>
+  }
+  @if(poruka != ""){
+    <h1 class="poruka-alert">{{ poruka }}</h1>
+  }
+  
+
+</body>

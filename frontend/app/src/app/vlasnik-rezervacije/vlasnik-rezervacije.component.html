@@ -1,0 +1,87 @@
+<header>
+  <div class="top-nav">
+    <a routerLink="/">Početna</a>
+    <a routerLink="/korisnik">Profil</a>
+    <a class="active" routerLink="/vlasnikRezervacije">Резервације</a>
+  </div>
+</header>
+
+<body>
+  <div class="page">
+    <h1>Резервације за моје викендице</h1>
+
+    <!-- NEOBRADJENE REZERVACIJE -->
+    <section class="card">
+      <h2>Необрађене резервације</h2>
+      <p class="help">Прикажи све нове захтеве за моје викендице.</p>
+
+      <table class="res-table">
+        <thead>
+          <tr>
+            <th>Викендица</th>
+            <th>Туриста ID</th>
+            <th>Датум од</th>
+            <th>Датум до</th>
+            <th>Акције</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of neobradjeneRezervacije">
+            <td>{{ r.naziv }}</td>
+            <td>{{ r.turista_id }}</td>
+            <td>{{ r.datum_od | date:'yyyy-MM-dd' }}</td>
+            <td>{{ r.datum_do | date:'yyyy-MM-dd' }}</td>
+            <td>
+              <button (click)="potvrdi(r)">✅ Потврди</button>
+              <button (click)="otvoriOdbijFormu(r)">❌ Одбиј</button>
+            </td>
+          </tr>
+          <tr *ngIf="neobradjeneRezervacije.length === 0">
+            <td colspan="5">Нема нових резервација.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- KALENDAR -->
+    <section class="card">
+      <h2>Календар резервација</h2>
+      <full-calendar
+        [options]="calendarOptions"
+        style="max-width: 900px; margin: auto;"
+      ></full-calendar>
+    </section>
+  </div>
+
+  
+  <div *ngIf="odbijModal" class="modal-backdrop">
+    <div class="modal">
+      <h3>Одбијање резервације</h3>
+      <p class="muted">
+        Викендица: <strong>{{ izabranaRezervacija?.naziv }}</strong> <br />
+        Термин: {{ izabranaRezervacija?.datum_od | date:'yyyy-MM-dd' }} –
+        {{ izabranaRezervacija?.datum_do | date:'yyyy-MM-dd' }}
+      </p>
+
+      <label for="komentar">Коментар (обавезан):</label>
+      <textarea
+        id="komentar"
+        [(ngModel)]="komentarOdbijanje"
+        placeholder="Унесите разлог одбијања..."
+        maxlength="300"
+      ></textarea>
+
+      <div class="modal-actions">
+        <button class="btn" (click)="zatvoriOdbijanje()">Откажи</button>
+        <button
+          class="btn primary"
+          (click)="odbij()"
+          [disabled]="!komentarOdbijanje.trim()"
+        >
+          Потврди одбијање
+        </button>
+      </div>
+      <p class="poruka">{{ porukaOdbijanje }}</p>
+    </div>
+  </div>
+</body>

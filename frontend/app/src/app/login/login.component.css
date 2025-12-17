@@ -1,0 +1,165 @@
+/* login.component.css */
+
+/* Reset i osnovni izgled stranice */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Glavni kontejner sa slikom pozadine */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  /* Slika pozadine */
+  background-image: url('../../../public/planinaAkvarel.jpg');
+  background-size: 57%;         /* manja zumiranost – menjaj 100–120% po potrebi */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  /* slika miruje dok se skroluje */
+  background-color: #ffffff;     /* rezervna boja ako slika ne učita */
+}
+
+/* Kartica (forma za prijavu) */
+.login-card {
+  background: rgba(255, 255, 255, 0.15);   /* Providna bela pozadina */
+  backdrop-filter: blur(15px);             /* Efekat stakla */
+  -webkit-backdrop-filter: blur(15px);     /* Za Safari podršku */
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Blagi beli okvir */
+  width: 350px;
+  text-align: center;
+}
+
+/* Naslov */
+.login-card h2 {
+  color: rgb(30, 100, 200);
+  font-size: 28px;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+/* Labela */
+label {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input polja */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: rgb(0, 120, 255);
+  box-shadow: 0 0 5px rgba(0, 120, 255, 0.4);
+}
+
+/* Radio dugmad */
+.radio-group {
+  text-align: left;
+  margin-top: 10px;
+  color: #333;
+  font-weight: 500;
+}
+
+.radio-group label {
+  margin-left: 5px;
+}
+
+/* Dugme */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  background-color: rgb(0, 122, 255);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background-color: rgb(0, 100, 220);
+  transform: scale(1.03);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Link za registraciju */
+.register-link {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: rgb(0, 100, 220);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+.poruka-alert {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff4c4c;
+  background: rgba(255, 0, 0, 0.15); /* prozirna crvena pozadina */
+  border: 2px solid rgba(255, 0, 0, 0.6);
+  padding: 15px 30px;
+  border-radius: 14px;
+  width: fit-content;
+  margin: 25px auto;
+  backdrop-filter: blur(6px); /* efekat stakla */
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+  animation: blinkAlert 1.4s infinite alternate;
+  transition: all 0.3s ease;
+}
+
+/* Efekat pulsiranja / blinkanja */
+@keyframes blinkAlert {
+  0% {
+    color: #ff6666;
+    background: rgba(22, 2, 2, 0.625);
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.3);
+    transform: scale(1);
+  }
+  100% {
+    color: #ff1a1a;
+    background: rgba(15, 0, 0, 0.25);
+    box-shadow: 0 0 24px rgba(255, 0, 0, 0.6);
+    transform: scale(1.05);
+  }
+}
+.auth-links {
+  text-align: right;
+  margin-bottom: 20px;
+  margin-right: 30px;
+}

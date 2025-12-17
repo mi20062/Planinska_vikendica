@@ -1,0 +1,38 @@
+<h2>Korisnici</h2>
+<table>
+  <tr><th>Ime</th><th>Prezime</th><th>Status</th><th>Akcije</th></tr>
+  <tr *ngFor="let k of korisnici">
+    <td>{{k.ime}}</td>
+    <td>{{k.prezime}}</td>
+    <td>{{k.aktivan ? 'Aktivan' : 'Neaktivan'}}</td>
+    <td>
+      <button (click)="deaktiviraj(k.id)">Deaktiviraj</button>
+      <button (click)="obrisi(k.id)">Obriši</button>
+    </td>
+  </tr>
+</table>
+
+<h2>Zahtevi za registraciju</h2>
+<table>
+  <tr><th>Korisnik</th><th>Akcije</th></tr>
+  <tr *ngFor="let z of zahtevi">
+    <td>{{z.ime}} {{z.prezime}}</td>
+    <td>
+      <button (click)="prihvatiZahtev(z.id)">Prihvati</button>
+      <button (click)="odbijZahtev(z.id)">Odbij</button>
+    </td>
+  </tr>
+</table>
+
+<h2>Vikendice</h2>
+<table>
+  <tr><th>Naziv</th><th>Lokacija</th><th>Cena</th><th>Akcije</th></tr>
+  <tr *ngFor="let v of vikendice" [ngStyle]="{'background-color': crvenaBoja(v) ? '#ffcccc' : 'white'}">
+    <td>{{v.naziv}}</td>
+    <td>{{v.mesto}}</td>
+    <td>{{v.cena}}</td>
+    <td>
+      <button *ngIf="crvenaBoja(v)" (click)="blokirajVikendicu(v.id)">Blokiraj 48h</button>
+    </td>
+  </tr>
+</table>

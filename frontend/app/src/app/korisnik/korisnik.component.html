@@ -1,0 +1,74 @@
+@if(korisnik.uloga == 'turista'){
+<header>
+  <div class="top-nav">
+    <a routerLink="/">Početna</a> &nbsp; &nbsp;
+    <a routerLink="/korisnik">Profil</a> &nbsp; &nbsp;
+    <a routerLink = "/turistaRezervacije">Rezervacije</a> &nbsp; &nbsp;
+    <a routerLink = "/vikendiceTurista">Vikendice</a>
+  </div>
+</header>
+}
+@else if(korisnik.uloga == 'vlasnik'){
+  <header>
+  <div class="top-nav">
+    <a routerLink="/">Home</a> &nbsp; &nbsp;
+    <a routerLink="/korisnik">Profil</a> &nbsp; &nbsp;
+    <a routerLink = "/vlasnikRezervacije" >Rezervacije</a> &nbsp; &nbsp;
+    <a routerLink = "/vlasnikVikendice">Vikendice</a> &nbsp; &nbsp;
+    <a routerLink = "/statistika">Statistike</a>
+  </div>
+</header>
+}
+
+<div class="sub-header">
+  <div>Dobrodošli</div>
+  <button class="btn-ctl" (click)="logout()">Odjavi se</button>
+</div>
+
+
+<div class="profile-container">
+  <h2>Мој профил</h2>
+  <h4>{{korisnik.ime}} {{korisnik.prezime}} {{korisnik.adresa}} {{korisnik.email}} {{korisnik.kontakt_telefon}} {{korisnik.broj_kreditne_kartice}}</h4>
+
+  <!-- Профилна слика -->
+  <div class="profile-picture">
+    <img [src]="profileImgUrl" alt="Профилна слика">
+    <input type="file" (change)="onProfileImageChange($event)" />
+  </div>
+
+  <!-- Форма за основне податке -->
+  <form >
+    <div class="form-group">
+      <label for="ime">Име: <span style="color: red;">{{korisnik.ime}}</span></label>
+      <input id="ime" type="text" [(ngModel)]="novoIme" name="ime">
+    </div>
+
+    <div class="form-group">
+      <label for="prezime">Презиме: <span style="color: red;">{{korisnik.prezime}}</span></label>
+      <input id="prezime" type="text" [(ngModel)]="novoPrezime" name="prezime">
+    </div>
+
+    <div class="form-group">
+      <label for="adresa">Адреса:<span style="color: red;">{{korisnik.adresa}}</span></label>
+      <input id="adresa" type="text" [(ngModel)]="novaAdresa" name="adresa">
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail: <span style="color: red;">{{korisnik.email}}</span></label>
+      <input id="email" type="email" [(ngModel)]="noviEmail" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="telefon">Контакт телефон: <span style="color: red;">{{korisnik.kontakt_telefon}}</span></label>
+      <input id="telefon" type="text" [(ngModel)]="noviKontakt_telefon" name="telefon">
+    </div>
+
+    <div class="form-group">
+      <label for="kartica">Број кредитне картице: <span style="color: red;">{{korisnik.broj_kreditne_kartice}}</span></label>
+      <input id="kartica" type="text" [(ngModel)]="noviBroj_kreditne_kartice" name="kartica">
+    </div>
+    <p>{{poruka}}</p>
+
+    <button class="btn-save" (click) = "azuriraj()">Ажурирај профил</button>
+  </form>
+</div>

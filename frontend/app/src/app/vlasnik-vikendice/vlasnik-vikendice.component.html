@@ -1,0 +1,60 @@
+<header>
+  <div class="top-nav">
+    <a routerLink="/">Почетна</a>
+    <a routerLink="/korisnik">Профил</a>
+    <a class="active" routerLink="/vlasnikVikendice">Викендице</a>
+    <a routerLink="/vlasnikRezervacije">Резервације</a>
+    <a routerLink="/statistika">Статистика</a>
+  </div>
+</header>
+
+<div class="container">
+  <h2>Моје викендице</h2>
+
+  <table>
+    <tr>
+      <th>Назив</th><th>Место</th><th>Цена</th><th>Број соба</th><th>Акције</th>
+    </tr>
+    <tr *ngFor="let v of vikendice">
+      <td>{{v.naziv}}</td>
+      <td>{{v.mesto}}</td>
+      <td>{{v.cena}} €</td>
+      <td>{{v.broj_soba}}</td>
+      <td>
+        <button (click)="pokreniIzmenu(v)">Уреди</button>
+        <button class="obrisi" (click)="obrisi(v.id)">Обриши</button>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Forma za uređivanje -->
+  <div *ngIf="prikaziFormuZaIzmenu" class="modal">
+    <h3>Измени викендицу</h3>
+    <form (ngSubmit)="sacuvajIzmenu()">
+      <input [(ngModel)]="zaIzmenu.naziv" name="naziv" placeholder="Назив">
+      <input [(ngModel)]="zaIzmenu.mesto" name="mesto" placeholder="Место">
+      <textarea [(ngModel)]="zaIzmenu.opis" name="opis" placeholder="Опис услуга"></textarea>
+      <input type="number" [(ngModel)]="zaIzmenu.cena" name="cena" placeholder="Цена по ноћи">
+      <input type="number" [(ngModel)]="zaIzmenu.broj_soba" name="broj_soba" placeholder="Број соба">
+      <button type="submit">Сачувај</button>
+      <button type="button" (click)="otkaziIzmenu()">Откажи</button>
+    </form>
+  </div>
+
+  <hr>
+  <h3>Додај нову викендицу</h3>
+  <form (submit)="dodaj()">
+    <input [(ngModel)]="nova.naziv" name="naziv" placeholder="Назив">
+    <input [(ngModel)]="nova.mesto" name="mesto" placeholder="Место">
+    <textarea [(ngModel)]="nova.opis" name="opis" placeholder="Опис услуга"></textarea>
+    <input type="number" [(ngModel)]="nova.cena" name="cena" placeholder="Цена по ноћи">
+    <input type="number" [(ngModel)]="nova.broj_soba" name="broj_soba" placeholder="Број соба">
+    <input type="text" [(ngModel)]="nova.telefon" name="telefon" placeholder="Телефон">
+    <input type="text" [(ngModel)]="nova.koordinate" name="koordinate" placeholder="Координате">
+    <label>Слика:</label>
+    <input type="file" (change)="onSlikaChange($event)">
+    <label>JSON фајл:</label>
+    <input type="file" (change)="onJsonChange($event)">
+    <button type="submit">Додај</button>
+  </form>
+</div>

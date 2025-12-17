@@ -1,0 +1,118 @@
+/* Glavni kontejner */
+.statistika-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f6ff 0%, #ffffff 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Naslov */
+.statistika-naslov {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a3e8c;
+  margin-bottom: 30px;
+  text-shadow: 0 0 5px rgba(26, 62, 140, 0.1);
+}
+
+/* Kartice za dijagrame */
+.dijagram-kartica {
+  width: 80%;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  margin-bottom: 40px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dijagram-kartica:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Naslovi unutar kartica */
+.dijagram-kartica h3 {
+  font-size: 20px;
+  color: #224488;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e3ebff;
+  padding-bottom: 8px;
+}
+
+/* Canvas za chart */
+canvas {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+/* Pie chart da bude malo manji */
+.pie-chart canvas {
+  height: 300px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .statistika-container {
+    padding: 20px;
+  }
+  .dijagram-kartica {
+    width: 95%;
+  }
+}
+/* ======= NAVIGACIJA ======= */
+header {
+  background-color: rgb(135, 206, 250); /* sky blue */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 14px 0;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.top-nav a:hover {
+  background-color: rgb(100, 180, 240);
+  color: rgb(0, 50, 100);
+  transform: scale(1.05);
+}
+
+/* Aktivna stranica */
+.top-nav a.active {
+  background-color: rgb(0, 120, 200);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive izgled */
+@media (max-width: 700px) {
+  .top-nav {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .top-nav a {
+    font-size: 1em;
+    margin: 4px 0;
+  }
+}

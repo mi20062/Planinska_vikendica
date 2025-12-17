@@ -1,0 +1,75 @@
+.top-nav {
+  display: flex;
+  gap: 15px;
+  background-color: #007acc;
+  padding: 10px;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.top-nav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+.page {
+  padding: 20px;
+}
+
+.card {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.help {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.res-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.res-table th {
+  background: #1e90ff;
+  color: white;
+  padding: 8px;
+}
+
+.res-table td {
+  padding: 6px;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}

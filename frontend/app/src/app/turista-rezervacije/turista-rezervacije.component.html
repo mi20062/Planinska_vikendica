@@ -1,0 +1,123 @@
+<header>
+  <div class="top-nav">
+    <a routerLink="/">Početna</a>
+    <a routerLink="/korisnik">Profil</a>
+    <a routerLink="/vikendiceTurista">Vikendice</a>
+    <a class="active" routerLink="/turistaRezervacije">Резервације</a>
+  </div>
+</header>
+
+<body>
+  <div class="page">
+    <h1>Моје резервације</h1>
+
+    <!-- AKTUELNE REZERVACIJE -->
+    <section class="card">
+      <h2>Актуелне резервације</h2>
+      <p class="help">Овде видите резервације које још нису завршене. У року ≥ 1 дан до почетка можете отказати.</p>
+
+      <table class="res-table">
+        <thead>
+          <tr>
+            <th>Датум почетка</th>
+            <th>Датум краја</th>
+            <th>Викендица</th>
+            <th>Место</th>
+            <th>Акције</th>
+          </tr>
+        </thead>
+        <tbody>
+            @if(aktuelneRezervacije.length>0){
+                @for(r of aktuelneRezervacije; track r.id){
+                    <tr>
+                        <td>{{ r.datum_od | date:'yyyy-MM-dd' }}</td>
+                        <td>{{ r.datum_do | date:'yyyy-MM-dd' }}</td>
+                        <td>{{ r.naziv }}</td>
+                        <td>{{ r.mesto }}</td>
+                        <td>
+                        <button (click)="otkazi(r)">Откажи</button>
+                        
+                        </td>
+                    </tr>
+                }
+            }
+          
+        </tbody>
+      </table>
+      <span >{{poruka_otkazivanje}}</span>
+    </section>
+
+    <!-- ARHIVA REZERVACIJA -->
+    <section class="card">
+      <h2>Архива резервација</h2>
+      <p class="help">Архива приказана од најскоријих ка најстаријим.</p>
+
+      <table class="res-table">
+        <thead>
+          <tr>
+            <th>Датум почетка</th>
+            <th>Викендица</th>
+            <th>Коментар</th>
+            <th>Оцена</th>
+            <th>Акција</th>
+          </tr>
+        </thead>
+        <tbody>
+            @if(prosleRezervacije.length>0){
+                @for(pr of prosleRezervacije; track pr.id){
+                    <tr >
+                        <td>{{ pr.datum_od | date:'yyyy-MM-dd' }}</td>
+                        <td>{{ pr.naziv }}</td>
+                        <td>
+                            
+                                <span >Komentar</span>
+                                <span class="small-muted">Нема коментара</span>
+                            
+                        </td>
+                        <td>
+                            
+                        <span >5★</span>
+                        <span  class="small-muted">Нема оцене</span>
+                            
+                        </td>
+                        <td>
+                        <button  (click)="otvoriKomentarFormu(pr)">Остави коментар</button>
+                        
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- MODAL: forma za komentar i ocenu -->
+   @if(komentarOcena ==1){
+  <div class="modal-backdrop" >
+    <div class="modal">
+      <h3>Оставите коментар и оцену</h3>
+      <p class="muted">За резервацију: <strong>{{ izabranaRezervacija.vikendica_naziv }}</strong> ({{ izabranaRezervacija.datum_od | date:'yyyy-MM-dd' }})</p>
+
+      <label for="kom">Коментар (опционo, max 500):</label>
+      <textarea id="kom" maxlength="500" [(ngModel)]="commentText" placeholder="Напишите ваш утисак..."></textarea>
+
+      <label>Оцена:</label>
+      <div class="star-rating">
+        <input type="radio" id="star5" name="rating" value="5" [(ngModel)]="rating"/><label for="star5" title="5 stars">★</label>
+        <input type="radio" id="star4" name="rating" value="4" [(ngModel)]="rating"/><label for="star4" title="4 stars">★</label>
+        <input type="radio" id="star3" name="rating" value="3" [(ngModel)]="rating"/><label for="star3" title="3 stars">★</label>
+        <input type="radio" id="star2" name="rating" value="2" [(ngModel)]="rating"/><label for="star2" title="2 stars">★</label>
+        <input type="radio" id="star1" name="rating" value="1" [(ngModel)]="rating"/><label for="star1" title="1 star">★</label>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn" (click)="zatvoriKomentar()">Откажи</button>
+        <button class="btn primary" (click)="posaljiKomentar()" [disabled]="!mozePoslatiKomentar()">Пошаљи</button>
+      </div>
+      <p  class="poruka">{{ komentarPoruka }}</p>
+    </div>
+    
+  </div>
+  }
+</body>

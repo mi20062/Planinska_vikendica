@@ -1,0 +1,135 @@
+<div class="auth-links">
+    <a routerLink="/" class="login-link">Početna</a> 
+    
+    </div>
+<form >
+
+  <!-- Korisničko ime -->
+  <div>
+    <label for="korisnickoIme">Корисничко име:</label>
+    <input
+      type="text"
+      id="korisnickoIme"
+      name="korisnicko_ime"
+      [(ngModel)]="korisnik.korisnicko_ime"
+      
+    >
+  </div>
+
+  <!-- Lozinka -->
+  <div>
+    <label for="lozinka">Лозинка:</label>
+    <input
+      type="password"
+      id="lozinka"
+      name="lozinka"
+      [(ngModel)]="korisnik.lozinka"
+    >
+  </div>
+
+  <!-- Ime -->
+  <div>
+    <label for="ime">Име:</label>
+    <input
+      type="text"
+      id="ime"
+      name="ime"
+      [(ngModel)]="korisnik.ime"
+      
+    >
+  </div>
+
+  <!-- Prezime -->
+  <div>
+    <label for="prezime">Презиме:</label>
+    <input
+      type="text"
+      id="prezime"
+      name="prezime"
+      [(ngModel)]="korisnik.prezime"
+      
+    >
+  </div>
+
+  <!-- Pol -->
+  <div>
+    <label for="pol">Пол:</label>
+    <select id="pol" name="pol" [(ngModel)]="korisnik.pol" >
+      <option value="">Изабери</option>
+      <option value="M">М</option>
+      <option value="Ž">Ж</option>
+    </select>
+  </div>
+  <div>
+    <label for="pol">Улога:</label>
+    <select id="uloga" name="pol" [(ngModel)]="korisnik.uloga" >
+      <option value="">Изабери</option>
+      <option value="vlasnik">Власник</option>
+      <option value="turista">Туриста</option>
+    </select>
+  </div>
+
+  <!-- Adresa -->
+  <div>
+    <label for="adresa">Адреса:</label>
+    <input
+      type="text"
+      id="adresa"
+      name="adresa"
+      [(ngModel)]="korisnik.adresa"
+      
+    >
+  </div>
+
+  <!-- Kontakt telefon -->
+  <div>
+    <label for="telefon">Контакт телефон:</label>
+    <input
+      type="text"
+      id="telefon"
+      name="kontakt_telefon"
+      [(ngModel)]="korisnik.kontakt_telefon"
+      
+    >
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email">И-мејл адреса:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="korisnik.email"
+      
+    >
+  </div>
+
+  <!-- Profilna slika -->
+  <div>
+    <label for="profilna">Профилна слика:</label>
+    <div class="profile-picture">
+    
+    <input type="file" (change)="onProfileImageChange($event)" />
+  </div>
+  </div>
+
+  <!-- Broj kreditne kartice -->
+  <div>
+    <label for="kartica">Број кредитне картице:</label>
+    <input
+      type="text"
+      id="kartica"
+      name="broj_kreditne_kartice"
+      [(ngModel)]="korisnik.broj_kreditne_kartice"
+      
+    >
+  </div>
+
+  <!-- Poruke greške -->
+  <div style="color: red">{{ poruka }}</div>
+  <div  style="color: red">{{ poruka_slika }}</div>
+
+  <!-- Dugme za registraciju -->
+  <button (click) = "registruj()" >Регистрација</button>
+</form>

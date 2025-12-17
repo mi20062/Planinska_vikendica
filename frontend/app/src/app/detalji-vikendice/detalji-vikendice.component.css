@@ -1,0 +1,144 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: rgb(245, 250, 255);
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(135, 206, 250);
+  padding: 12px 0;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 20px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.top-nav a:hover {
+  color: rgb(0, 60, 120);
+  transform: scale(1.05);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 25px;
+  gap: 40px;
+}
+
+.details,
+.zakazivanje {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+  flex: 2;
+  min-width: 450px;
+}
+
+.zakazivanje {
+  flex: 1;
+  min-width: 350px;
+}
+
+h2, h3 {
+  color: rgb(0, 90, 160);
+  margin-bottom: 15px;
+}
+
+.mesto {
+  font-style: italic;
+  color: gray;
+  margin-top: -10px;
+}
+
+.vlasnik {
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.opis {
+  margin: 10px 0 15px 0;
+  line-height: 1.4;
+}
+
+.info-box p {
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+.slika-vikendice img {
+  width: 100%;
+  max-height: none; /* uklanja maksimalnu visinu */
+  border-radius: 12px;
+  object-fit: contain; /* cela slika se vidi bez sečenja */
+  margin-top: 15px;
+}
+
+/* Zakazivanje */
+.step label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.step input,
+.step textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid rgb(200, 220, 240);
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.step textarea {
+  resize: none;
+  height: 80px;
+}
+
+.dugmad {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+button {
+  background-color: rgb(135, 206, 250);
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: rgb(100, 180, 240);
+  transform: translateY(-2px);
+}
+
+.poruka {
+  text-align: center;
+  color: rgb(200, 0, 0);
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

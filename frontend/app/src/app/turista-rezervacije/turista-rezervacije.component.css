@@ -1,0 +1,192 @@
+/* Global / page */
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: rgb(245,250,255);
+  margin: 0;
+  color: #222;
+}
+
+.top-nav {
+  display:flex;
+  justify-content:center;
+  background-color: rgb(135,206,250);
+  padding: 12px 0;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 16px;
+}
+
+.top-nav a.active {
+  text-decoration: underline;
+}
+
+.page {
+  width: 90%;
+  max-width: 1100px;
+  margin: 24px auto;
+}
+
+h1 {
+  color: rgb(0,80,140);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  margin-bottom: 22px;
+}
+
+.card h2 {
+  color: rgb(0,90,160);
+  margin: 4px 0 10px 0;
+}
+
+.help {
+  color: #555;
+  font-size: 0.95em;
+  margin-bottom: 12px;
+}
+
+/* Tabele */
+.res-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.res-table thead {
+  background-color: rgb(100,180,250);
+  color: white;
+}
+
+.res-table th, .res-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eef6ff;
+  font-size: 0.95em;
+}
+
+.res-table tbody tr:hover {
+  background-color: rgb(240,250,255);
+}
+
+.empty {
+  text-align: center;
+  color: #666;
+  padding: 12px 0;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #e6f6ff;
+  color: rgb(0,70,120);
+  font-weight: 600;
+}
+
+.btn.primary {
+  background: rgb(135,206,250);
+  color: white;
+}
+
+.btn.cancel {
+  background: #ffdede;
+  color: rgb(140,0,0);
+}
+
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* small muted text */
+.small-muted { color: #8b97a8; font-size: .9em; }
+
+/* MODAL */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,20,30,0.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index: 50;
+}
+
+.modal {
+  width: 92%;
+  max-width: 560px;
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.modal h3 { margin-top: 0; color: rgb(0,80,140); }
+.modal .muted { color: #666; font-size: .95em; }
+
+.modal textarea {
+  width: 100%;
+  min-height: 100px;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgb(200,220,240);
+  resize: vertical;
+}
+
+/* Star rating (visual) */
+.star-rating {
+  display:flex;
+  gap:6px;
+  margin: 8px 0 10px 0;
+  justify-content:flex-start;
+  direction: ltr;
+}
+
+/* hide radio inputs, style labels as stars */
+.star-rating input { display:none; }
+.star-rating label {
+  font-size: 26px;
+  color: #cfcfcf;
+  cursor: pointer;
+  transition: transform .12s;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input:checked ~ label {
+  color: #ffb400;
+  transform: translateY(-3px);
+}
+
+/* actions in modal */
+.modal-actions {
+  display:flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.poruka {
+  color: rgb(180,0,0);
+  margin-top: 8px;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .res-table th, .res-table td { font-size: 0.9em; padding: 8px; }
+  .modal { padding: 14px; }
+}
